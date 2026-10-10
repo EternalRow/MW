@@ -1,0 +1,132 @@
+body{
+    margin: 0;
+    background-color: whitesmoke;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.header, .background{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+
+.menu{
+    margin:auto;
+}
+
+.logo_img{
+    height: 95px;
+    margin-left: 200px;
+    padding: 10px;
+}
+
+.header{
+    flex-flow: row;
+    justify-content: space-between;
+    font-size: 20px;
+    height: 15%;
+}
+
+.background{
+    background-color:rgb(101, 219, 126);
+    height: 500px;
+    padding: auto;
+    width: auto;
+}
+
+.main{
+    border-radius: 20px;
+    box-shadow: rgb(129, 126, 126) 0.2px 0.5px 10px;
+    height: auto;
+    padding-bottom: 30px;
+    width: 40%;
+    margin: 12px;
+    background-color: whitesmoke;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+
+.logo{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.p_info{
+    margin: 0;
+}
+
+input[type=text], input[type=password]{
+    border-radius: 5px;
+    border-color: none;
+    border-width: 0.1px;
+    height: 30px;
+    width: 200px;
+}
+
+input[type=text]:focus-within, input[type=password]:active{
+    border: none;
+}
+
+
+input[type=submit]{
+    background-color: rgb(91, 214, 117);
+    border: 2px solid rgb(225, 224, 224);
+    border-radius: 5px;
+    height: 35px;
+    width: 100px;
+    color: white;
+}
+
+input[type=submit]:hover{
+    background-color: rgb(117, 232, 142);
+    cursor: pointer;
+}
+
+.footer{
+    height: 15%;
+    display: flex;
+    flex-flow: row;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    align-items: center;
+}
+
+
+h2{
+    font-size: 30px;
+}
+
+input{
+    margin: 7px;
+}
+
+.p_nav:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.pomoc{
+    align-items: left;
+    margin-top: 10px;
+}
+
+.pomoc_p{
+    margin: 7px;
+    margin-left: 20px;
+    font-weight: 150;
+    color: rgb(52, 130, 52);
+    width: fit-content;
+}
+
+.pomoc_p:hover{
+    cursor: pointer;
+    color: rgb(130, 213, 130);
+}
