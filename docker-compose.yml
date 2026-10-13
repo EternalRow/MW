@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./backend
+    container_name: backend
+
+  frontend:
+    ports: ["8080:80"]
+    container_name: frontend
+    image: nginx:alpine
+    volumes:
+      - type: bind
+        source: ./frontend
+        target: /usr/share/nginx/html
+        read_only: true
+  
+  database:
+    container_name: database
+    image: mysql:latest
