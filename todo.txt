@@ -1,0 +1,18 @@
+TOdo:
+- baza danych
+- baza/plik do zapisu logow (baza latwiejszy dostep?)
+- plik python zapisujacy logi
+- kontener z bazą
+- komunikacja walidacja.py z bazą
+- strona dla klienta i admina (pobieranie danych z bazy i WYŚWIETLANIE ich na stronie)
+- blokowanie konta/ip w przypadku podejrzanych logowan
+- informacja o nieudanym logowaniu (http://localhost:8080/index.html?error=1)
+
+Podejrzane logowania gdy:
+- X nieudanych prób logowań na to samo konto
+- jeden adres IP probouje X razy logowac sie do aplikacji, za kazdym razem podajac inny login
+- wiele adresow ip probuje zbruteforce'owac jedno konto
+- wiele prob z jednego IP w krotkim czasie
+- proba wstrzykiwania SQL
+- nieudana captcha?
+- uzytkownik loguje się na konto z innego miejsca/o innej godzinie niz zwykle?
