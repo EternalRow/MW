@@ -16,3 +16,9 @@ services:
   database:
     container_name: database
     image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: baza
+    ports: ["3306:3306"]
+    volumes:
+      - ./baza.sql:/docker-entrypoint-initdb.d/baza.sql
