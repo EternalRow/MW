@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="logowanie.css">
+    <title>Logowanie do usługi</title>
+</head>
+<body>
+    <div class="header">
+        <div class="menu">
+            <p class="p_nav">Strona główna</p>
+        </div>
+        <div class="menu">
+            <p class="p_nav">Utwórz konto</p>
+        </div>
+        <div class="menu">
+            <p class="p_nav">Pożyczki</p>
+        </div>
+        <div class="menu">
+            <p class="p_nav">Ubezpieczenia</p>
+        </div>
+        <div class="menu">
+            <p class="p_nav">Bezpieczeństwo</p>
+        </div>
+        <div class="menu">
+            <p class="p_nav">Logowanie</p>
+        </div>
+        <div class="menu">
+            <img src="./logo.png" alt="Logo usługi" class="logo_img">
+        </div>
+    </div>
+
+    <div class="background">
+        <div class="main">
+            <div class="logging">
+                <div class="logo">
+                    <h2>Logowanie</h2>
+                    <p class="p_info">Podaj swój identyfikator lub login, aby zalogować się do serwisu.</p>
+                </div>
+            </div>
+
+            <div class="form">
+                <form action="http://localhost:8000/login" method="post">
+                    <input type="text" name="username" id="username" maxlength="10", placeholder="username">
+                    <input type="password" name="password" id="password" minlength="3" placeholder="password">
+                    <input type="submit" value="Zaloguj się">
+                </form>
+            </div>
+            <div class="pomoc">
+                <p class="pomoc_p">Nie pamiętam loginu.</p>
+                <p class="pomoc_p">Nie pamiętam hasła.</p>
+                <p class="pomoc_p">Mam zablokowany dostęp.</p>
+            </div>
+        </div>
+            
+    </div>
+
+    <div class="footer">
+        <div class="footer_left">
+            <p>Polityka prywatności</p>
+            <p>Regulamin</p>
+            <p></p>
+        </div>
+
+        <div class="footer_right">
+            <a href="https://www.freeiconspng.com/img/5979">Logo strony</a>
+        </div>
+    </div>
+</body>
+</html>
