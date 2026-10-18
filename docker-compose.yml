@@ -1,5 +1,6 @@
 services:
   backend:
+    ports: ["8000:8000"]
     build: ./backend
     container_name: backend
 
