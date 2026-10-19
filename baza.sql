@@ -7,6 +7,14 @@ CREATE TABLE dane (
   balance float,
   ip varchar(255)
 );
+CREATE TABLE sesje (
+    id varchar(64) PRIMARY KEY,
+    user_id int,
+    CONSTRAINT fk
+    FOREIGN KEY (user_id)
+    REFERENCES dane(id)
+);
+
 INSERT INTO dane (id, first_name, last_name, email, password, balance, ip) VALUES
 (1, 'Arjun', 'Martinez', 'arjun.martinez73@yahoo.com', 'amartinez744', 871.08, '123.239.93.253'),
 (2, 'Mei', 'Tanaka', 'mei.tanaka90@outlook.com', 'mtanaka647', 547.42, '78.12.158.6'),

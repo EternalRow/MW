@@ -14,6 +14,7 @@ def walidacja(user, passwd):
         cursor = mydb.cursor()
         cursor.execute(f"SELECT * FROM dane WHERE email='{user}' AND password='{passwd}';")
         wynik = cursor.fetchone()
+        print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
         mydb.close()
         if wynik:
