@@ -7,8 +7,8 @@ def walidacja(user, passwd):
         mydb = mysql.connector.connect(
         host="database",
         user="root",
-        password=os.environ["DB_PASSWORD"],
-        database=os.environ["DB_DATABASE"]
+        password=os.environ["MYSQL_ROOT_PASSWORD"],
+        database=os.environ["MYSQL_DATABASE"]
         )
 
         cursor = mydb.cursor()
