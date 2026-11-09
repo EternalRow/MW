@@ -2,7 +2,6 @@ from fastapi import FastAPI, Form
 from fastapi.responses import RedirectResponse
 from walidacja import walidacja
 from sesja import gen_sesje
-from flask import jsonify
 
 app = FastAPI()
 

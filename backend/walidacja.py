@@ -3,7 +3,6 @@ import os
 
 
 def walidacja(user, passwd):
-    print(os.environ["DB_PASSWORD"])
     try:
         mydb = mysql.connector.connect(
         host="database",

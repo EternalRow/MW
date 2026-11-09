@@ -38,12 +38,14 @@
                     <h2>Logowanie</h2>
                     <p class="p_info">Podaj swój identyfikator lub login, aby zalogować się do serwisu.</p>
                     <script>
-                        const urlParams = new URLSearchParams(window.location.search);
+                        let urlParams = new URLSearchParams(window.location.search);
                         const error = urlParams.get('error');
                         if (error) {
                             const errorMessage = document.createElement('p');
                             errorMessage.textContent = 'Nieprawidłowy login lub hasło.';
                             errorMessage.style.color = 'red';
+                            errorMessage.style.marginBottom = 0;
+                            errorMessage.style.paddingBottom = 0;
                             document.querySelector('.logo').appendChild(errorMessage);
                         }
                     </script>
@@ -52,8 +54,8 @@
 
             <div class="form">
                 <form action="http://localhost:8000/login" method="post">
-                    <input type="text" name="username" id="username" placeholder="username">
-                    <input type="password" name="password" id="password" minlength="3" placeholder="password">
+                    <input type="text" name="username" id="username" placeholder="username" required>
+                    <input type="password" name="password" id="password" placeholder="password" required>
                     <input type="submit" value="Zaloguj się">
                 </form>
             </div>
