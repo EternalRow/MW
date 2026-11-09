@@ -19,7 +19,7 @@ WYMAGANIA DOT BACKENDU po M1:
 - kod 404 dla nieistniejącego zasobu
 - endpoint /health
 - healthcheck w compose korzystający z /health oraz depends_on: condition: service_healthy
-- konfiguracja przez zmienne środowiskowe
+
 
 Podejrzane logowania gdy:
 - X nieudanych prób logowań na to samo konto
@@ -29,3 +29,6 @@ Podejrzane logowania gdy:
 - proba wstrzykiwania SQL
 - nieudana captcha?
 - uzytkownik loguje się na konto z innego miejsca/o innej godzinie niz zwykle?
+
+done:
+- konfiguracja przez zmienne środowiskowe

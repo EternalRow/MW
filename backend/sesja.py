@@ -1,13 +1,14 @@
 import mysql.connector
 import random
+import os
 
 def gen_sesje(user):
     try:
         mydb = mysql.connector.connect(
         host="database",
         user="root",
-        password="toor",
-        database="baza"
+        password=os.environ["DB_PASSWORD"],
+        database=os.environ["DB_DATABASE"]
         )
 
         wynik=True

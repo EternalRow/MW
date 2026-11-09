@@ -2,6 +2,7 @@ from fastapi import FastAPI, Form
 from fastapi.responses import RedirectResponse
 from walidacja import walidacja
 from sesja import gen_sesje
+from flask import jsonify
 
 app = FastAPI()
 
@@ -16,3 +17,7 @@ def pobierz_dane(username: str = Form(...), password: str = Form(...)):
 @app.post('/logout')
 def logout():
     return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
+
+@app.get('/health')
+def health():
+    return jsonify({"status": "ok"})

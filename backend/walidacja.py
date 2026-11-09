@@ -1,14 +1,15 @@
 import mysql.connector
-
+import os
 
 
 def walidacja(user, passwd):
+    print(os.environ["DB_PASSWORD"])
     try:
         mydb = mysql.connector.connect(
         host="database",
         user="root",
-        password="toor",
-        database="baza"
+        password=os.environ["DB_PASSWORD"],
+        database=os.environ["DB_DATABASE"]
         )
 
         cursor = mydb.cursor()
