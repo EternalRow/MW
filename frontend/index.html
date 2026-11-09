@@ -37,6 +37,16 @@
                 <div class="logo">
                     <h2>Logowanie</h2>
                     <p class="p_info">Podaj swój identyfikator lub login, aby zalogować się do serwisu.</p>
+                    <script>
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const error = urlParams.get('error');
+                        if (error) {
+                            const errorMessage = document.createElement('p');
+                            errorMessage.textContent = 'Nieprawidłowy login lub hasło.';
+                            errorMessage.style.color = 'red';
+                            document.querySelector('.logo').appendChild(errorMessage);
+                        }
+                    </script>
                 </div>
             </div>
 
