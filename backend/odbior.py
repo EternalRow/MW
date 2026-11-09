@@ -18,6 +18,6 @@ def pobierz_dane(username: str = Form(...), password: str = Form(...)):
 def logout():
     return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
 
-@app.get('/health')
+@app.get("/health")
 def health():
-    return jsonify({"status": "ok"})
+    return {"status": "ok"}
