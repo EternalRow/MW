@@ -1,9 +1,19 @@
 from fastapi import FastAPI, Form
-from fastapi.responses import RedirectResponse
+from fastapi.responses import RedirectResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from walidacja import walidacja
-from sesja import gen_sesje
+from sesja import gen_sesje, usun_sesje
+from data import dane_klienta
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:8080"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post('/login')
 def pobierz_dane(username: str = Form(...), password: str = Form(...)):
@@ -13,9 +23,17 @@ def pobierz_dane(username: str = Form(...), password: str = Form(...)):
         return res
     return RedirectResponse(url='http://localhost:8080/index.html?error=1', status_code=303)
 
-@app.post('/logout')
+@app.get('/logout')
 def logout():
     return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
+
+@app.delete('/logout')
+def logout_delete():
+    return usun_sesje(1)
+
+@app.get("/klient")
+def klient():
+    return JSONResponse(content=dane_klienta(1), status_code=200) 
 
 @app.get("/health")
 def health():
