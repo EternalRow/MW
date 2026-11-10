@@ -50,6 +50,7 @@ def admin():
         else:
             return JSONResponse(content=dane, status_code=500)
     return JSONResponse(content=dane_admina(), status_code=200)
+
 @app.get("/health")
 def health():
     return {"status": "ok"}

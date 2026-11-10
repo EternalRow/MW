@@ -1,23 +1,18 @@
 TOdo:
-- baza/plik do zapisu logow (baza latwiejszy dostep?)
-- plik python zapisujacy logi
+- baza do zapisu logow
+- funkcja zapisujaca logi
 - strona dla admina (pobieranie danych z bazy i WYŚWIETLANIE ich na stronie)
 - blokowanie konta/ip w przypadku podejrzanych logowan
-- informacja o nieudanym logowaniu (http://localhost:8080/index.html?error=1)
 - zmienić mysql:latest na obraz z innym tagiem
-- działanie sesji/wyłączanie
-- zmienne środowiskowe w osobnych pliku?
-
-WYMAGANIA DOT BACKENDU po M1:
-- min. 4 endpointy
-    GET: pojedynczy zasób
-    GET: lista zasobów
-    POST
-    PUT/PATCH lub DELETE
-- format wymiany danych: JSON, udokumentowany w README
-- kod 404 dla nieistniejącego zasobu
+- weryfikacja sesji
+- rozbudowanie walidacji
+- widok .html dla admina
+- tabela w bazie dla admina/parametr privilege?
+- hash haseł
 
 
+- dana lokacja / odpowiedzialna za konkretny obiekt np. DELETE klient, GET klient (osobno dla sesji)
+- README opis api (input/output)
 
 Podejrzane logowania gdy:
 - X nieudanych prób logowań na to samo konto
@@ -33,3 +28,10 @@ done:
 - podstawowa walidacja danych wejściowych, np. kod 400 przy błędnych danych
 - endpoint /health
 - healthcheck w compose korzystający z /health oraz depends_on: condition: service_healthy
+WYMAGANIA DOT BACKENDU po M1:
+- min. 4 endpointy
+    GET: pojedynczy zasób
+    GET: lista zasobów
+    POST
+    PUT/PATCH lub DELETE
+- format wymiany danych: JSON, udokumentowany w README
