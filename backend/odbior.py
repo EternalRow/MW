@@ -3,7 +3,7 @@ from fastapi.responses import RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from walidacja import walidacja
 from sesja import gen_sesje, usun_sesje
-from data import dane_klienta
+from data import dane_klienta, dane_admina
 
 app = FastAPI()
 
@@ -31,10 +31,25 @@ def logout():
 def logout_delete():
     return usun_sesje(1)
 
-@app.get("/klient")
-def klient():
-    return JSONResponse(content=dane_klienta(1), status_code=200) 
+@app.get("/klient/{session_id}")
+def klient_session(session_id: str):
+    dane = dane_klienta(session_id)
+    if "error" in dane:
+        if dane["error"] == "Brak danych":
+            return JSONResponse(content=dane, status_code=404) 
+        else:
+            return JSONResponse(content=dane, status_code=500)
+    return JSONResponse(content=dane, status_code=200)
 
+@app.get("/admin")
+def admin():
+    dane = dane_admina()
+    if "error" in dane:
+        if dane["error"] == "Brak danych":
+            return JSONResponse(content=dane, status_code=404) 
+        else:
+            return JSONResponse(content=dane, status_code=500)
+    return JSONResponse(content=dane_admina(), status_code=200)
 @app.get("/health")
 def health():
     return {"status": "ok"}
