@@ -106,3 +106,7 @@ input{
     text-decoration: underline;
     cursor: pointer;
 }
+
+th, td{
+    padding: 7px;
+}

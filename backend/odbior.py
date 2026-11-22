@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from walidacja import walidacja
 from sesja import gen_sesje, usun_sesje
 from data import dane_klienta, dane_admina
+from logi import zapis_log, dopisz_udane
 
 app = FastAPI()
 
@@ -17,7 +18,12 @@ app.add_middleware(
 
 @app.post('/login')
 def pobierz_dane(username: str = Form(...), password: str = Form(...)):
+    log_id = zapis_log(username, password)
+
     if walidacja(username, password):
+        if log_id != 0:
+            dopisz_udane(log_id)
+
         res=RedirectResponse(url='http://localhost:8080/klient.html', status_code=303)
         res.set_cookie(key="session_id", value=gen_sesje(username), httponly=True)
         return res

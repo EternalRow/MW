@@ -31,13 +31,13 @@ def dane_admina():
         database=os.environ["MYSQL_DATABASE"]
         )
         cursor = mydb.cursor()
-        cursor.execute(f"SELECT * FROM dane;")
+        cursor.execute(f"SELECT * FROM logi ORDER BY id DESC;")
         wynik = cursor.fetchall()
         print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
         mydb.close()
         if wynik:
-            return [{"id": rekord[0], "imie": rekord[1], "nazwisko": rekord[2], "email": rekord[3], "balans": rekord[4], "ip": rekord[6]} for rekord in wynik]
+            return [{"id": rekord[0], "email_input": rekord[1], "pass_input": rekord[2], "log_in": rekord[3], "log_time": str(rekord[4]), "ip": rekord[5], "type": rekord[6]} for rekord in wynik]
         return {"error": "Brak danych"}
     except Exception as e:
         print(f"Błąd bazy: {e}")
