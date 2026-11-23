@@ -16,21 +16,15 @@ services:
       retries: 5
 
   frontend:
+    build: ./frontend
     ports: ["8080:80"]
-    container_name: frontend
-    image: nginx:alpine
-    volumes:
-      - type: bind
-        source: ./frontend
-        target: /usr/share/nginx/html
-        read_only: true
     depends_on:
       backend:
         condition: service_healthy
   
   database:
     container_name: database
-    image: mysql:latest
+    image: mysql:9.7.4
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}

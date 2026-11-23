@@ -4,4 +4,12 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev    
     volumes:
-      - ./backend:/app              
+      - ./backend:/app
+  frontend:
+    volumes:
+      - ./frontend/index.html:/usr/share/nginx/html/index.html:ro
+      - ./frontend/klient.html:/usr/share/nginx/html/klient.html:ro
+      - ./frontend/klient.css:/usr/share/nginx/html/klient.css:ro
+      - ./frontend/logowanie.css:/usr/share/nginx/html/logowanie.css:ro
+      - ./frontend/klient.js:/usr/share/nginx/html/klient.js:ro 
+      - ./frontend/logo.png:/usr/share/nginx/html/logo.png:ro
