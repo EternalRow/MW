@@ -19,19 +19,22 @@ app.add_middleware(
 @app.post('/sesja')
 def pobierz_dane(username: str = Form(...), password: str = Form(...)):
     log_id = zapis_log(username, password)
-
-    if walidacja(username, password):
+    access = walidacja(username, password)
+    if access > 0:
         if log_id != 0:
             dopisz_udane(log_id)
-
+        if access == 2:
+            res =RedirectResponse(url='http://localhost:8080/admin.html', status_code=303)
+            res.set_cookie(key="session_id", value=gen_sesje(username), httponly=True)
+            return res
         res=RedirectResponse(url='http://localhost:8080/klient.html', status_code=303)
         res.set_cookie(key="session_id", value=gen_sesje(username), httponly=True)
         return res
-    return RedirectResponse(url='http://localhost:8080/index.html?error=1', status_code=303)
+    return RedirectResponse(url='http://localhost:8080?error=1', status_code=303)
 
 @app.get('/sesja')
 def logout():
-    return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
+    return RedirectResponse(url='http://localhost:8080', status_code=303)
 
 @app.delete('/sesja')
 def logout_delete(session_id: str = Cookie(None)):

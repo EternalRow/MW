@@ -13,3 +13,6 @@ services:
       - ./frontend/logowanie.css:/usr/share/nginx/html/logowanie.css:ro
       - ./frontend/klient.js:/usr/share/nginx/html/klient.js:ro 
       - ./frontend/logo.png:/usr/share/nginx/html/logo.png:ro
+      - ./frontend/admin.html:/usr/share/nginx/html/admin.html:ro
+      - ./frontend/admin.css:/usr/share/nginx/html/admin.css:ro
+      - ./frontend/admin.js:/usr/share/nginx/html/admin.js:ro

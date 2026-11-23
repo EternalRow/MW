@@ -12,15 +12,18 @@ def walidacja(user, passwd):
         )
 
         cursor = mydb.cursor()
-        cursor.execute(f"SELECT id FROM dane WHERE email='{user}' AND password='{passwd}';")
+        query = "SELECT * FROM dane WHERE email=%s AND password=%s;"
+        cursor.execute(query, (user, passwd))
         wynik = cursor.fetchone()
-        print(f"Wynik zapytania: {wynik}", flush=True)
+        # print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
         mydb.close()
         if wynik:
-            return True
-        return False
+            if wynik[7] == 1:  # sprawdza czy admin==true
+                return 2
+            return 1
+        return 0
     except Exception as e:
         print(f"Błąd bazy: {e}")
-        return False
+        return 0
     

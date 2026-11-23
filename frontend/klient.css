@@ -66,12 +66,15 @@ h3{
     flex-direction: column;
 }
 
-.p_info{
+.p_info, .p_nav{
     margin: 0;
 }
 
+p{
+    margin: 40px;
+}
 
-input[type=submit]{
+.logout-button{
     background-color: rgb(91, 214, 117);
     border: 2px solid rgb(225, 224, 224);
     border-radius: 5px;
@@ -79,19 +82,12 @@ input[type=submit]{
     width: 100px;
     color: white;
     margin:0;
+    margin-top: 10px;
 }
 
-input[type=submit]:hover{
+.logout-button:hover{
     background-color: rgb(117, 232, 142);
     cursor: pointer;
-}
-
-
-.logout-button {
-    display: flex;
-    flex-direction: column;
-    margin-top: 5%;
-    align-items: center;
 }
 
 h1{
