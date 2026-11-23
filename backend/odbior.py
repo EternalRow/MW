@@ -16,7 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.post('/login')
+@app.post('/sesja')
 def pobierz_dane(username: str = Form(...), password: str = Form(...)):
     log_id = zapis_log(username, password)
 
@@ -29,11 +29,11 @@ def pobierz_dane(username: str = Form(...), password: str = Form(...)):
         return res
     return RedirectResponse(url='http://localhost:8080/index.html?error=1', status_code=303)
 
-@app.get('/logout')
+@app.get('/sesja')
 def logout():
     return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
 
-@app.delete('/logout')
+@app.delete('/sesja')
 def logout_delete(session_id: str = Cookie(None)):
     return usun_sesje(session_id)
 

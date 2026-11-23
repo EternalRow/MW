@@ -33,13 +33,13 @@ fetch('http://localhost:8000/admin')
     });
 
 document.getElementById('logout').addEventListener('click', function() {
-    fetch('http://localhost:8000/logout', {
+    fetch('http://localhost:8000/sesja', {
         method: 'DELETE',
         credentials: 'include'
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = 'http://localhost:8000/logout';
+            window.location.href = 'http://localhost:8000/sesja';
         } else {
             console.error('Błąd podczas wylogowywania');
         }
