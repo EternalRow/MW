@@ -1,16 +1,3 @@
-function getCookie(cookieName) {
-    const cookies = document.cookie.split('; ');
-    for (const cookie of cookies) {
-        const [name, value] = cookie.split('=');
-        if (name === cookieName) {
-            return decodeURIComponent(value);
-        }
-    }
-    return null;
-}
-const session_key = getCookie('session_id');
-
-
 fetch(`http://localhost:8000/klient`, {
     credentials: 'include'
 })
@@ -33,13 +20,13 @@ fetch('http://localhost:8000/admin')
     });
 
 document.getElementById('logout').addEventListener('click', function() {
-    fetch('http://localhost:8000/logout', {
+    fetch('http://localhost:8000/sesja', {
         method: 'DELETE',
         credentials: 'include'
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = 'http://localhost:8000/logout';
+            window.location.href = 'http://localhost:8000/sesja';
         } else {
             console.error('Błąd podczas wylogowywania');
         }
