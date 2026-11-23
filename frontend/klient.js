@@ -1,4 +1,19 @@
-fetch('http://localhost:8000/klient/1')
+function getCookie(cookieName) {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === cookieName) {
+            return decodeURIComponent(value);
+        }
+    }
+    return null;
+}
+const session_key = getCookie('session_id');
+
+
+fetch(`http://localhost:8000/klient`, {
+    credentials: 'include'
+})
     .then(response => response.json())
     .then(data => {
         document.querySelector('h3').textContent = `Witaj, ${data.imie} ${data.nazwisko}`;
@@ -19,7 +34,8 @@ fetch('http://localhost:8000/admin')
 
 document.getElementById('logout').addEventListener('click', function() {
     fetch('http://localhost:8000/logout', {
-        method: 'DELETE'
+        method: 'DELETE',
+        credentials: 'include'
     })
     .then(response => {
         if (response.ok) {

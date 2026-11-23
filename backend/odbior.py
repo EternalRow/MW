@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI, Form, Cookie
 from fastapi.responses import RedirectResponse, JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from walidacja import walidacja
-from sesja import gen_sesje, usun_sesje
+from sesja import gen_sesje, usun_sesje, pobierz_uzytkownika
 from data import dane_klienta, dane_admina
 from logi import zapis_log, dopisz_udane
 
@@ -34,12 +34,15 @@ def logout():
     return RedirectResponse(url='http://localhost:8080/index.html', status_code=303)
 
 @app.delete('/logout')
-def logout_delete():
-    return usun_sesje(1)
+def logout_delete(session_id: str = Cookie(None)):
+    return usun_sesje(session_id)
 
-@app.get("/klient/{session_id}")
-def klient_session(session_id: str):
-    dane = dane_klienta(session_id)
+@app.get("/klient")
+def klient_session(session_id: str = Cookie(None)):
+    print(session_id)
+    user_id = pobierz_uzytkownika(session_id)
+    print(user_id)
+    dane = dane_klienta(user_id)
     if "error" in dane:
         if dane["error"] == "Brak danych":
             return JSONResponse(content=dane, status_code=404) 

@@ -33,7 +33,7 @@ def dane_admina():
         cursor = mydb.cursor()
         cursor.execute(f"SELECT * FROM logi ORDER BY id DESC;")
         wynik = cursor.fetchall()
-        print(f"Wynik zapytania: {wynik}", flush=True)
+        #print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
         mydb.close()
         if wynik:

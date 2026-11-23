@@ -32,7 +32,7 @@ def gen_sesje(user):
         print(f"Błąd bazy: {e}")
         return False
 
-def pobierz_dane_sesji(session_id):
+def pobierz_uzytkownika(session_id):
     try:
         mydb = mysql.connector.connect(
         host="database",
@@ -41,13 +41,13 @@ def pobierz_dane_sesji(session_id):
         database=os.environ["MYSQL_DATABASE"]
         )
         cursor = mydb.cursor()
-        cursor.execute(f"SELECT * FROM dane INNER JOIN sesje ON dane.id = sesje.user_id WHERE sesje.id='{session_id}';")
+        cursor.execute(f"SELECT user_id FROM sesje WHERE id LIKE {session_id};")
         wynik = cursor.fetchone()
         print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
         mydb.close()
         if wynik:
-            return wynik
+            return wynik[0]
         return False
     except Exception as e:
         print(f"Błąd bazy: {e}")
@@ -62,7 +62,7 @@ def usun_sesje(session_id):
         database=os.environ["MYSQL_DATABASE"]
         )
         cursor = mydb.cursor()
-        cursor.execute(f"DELETE FROM sesje WHERE user_id='{session_id}';")
+        cursor.execute(f"DELETE FROM sesje WHERE id='{session_id}';")
         cursor.close()
         mydb.commit()
         mydb.close()
