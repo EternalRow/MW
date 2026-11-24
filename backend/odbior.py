@@ -33,8 +33,17 @@ def pobierz_dane(username: str = Form(...), password: str = Form(...)):
     return RedirectResponse(url='http://localhost:8080?error=1', status_code=303)
 
 @app.get('/sesja')
-def logout():
-    return RedirectResponse(url='http://localhost:8080', status_code=303)
+def logout(session_id: str = Cookie(None)):
+    print("brrbrrbbrb")
+    if session_id == None:
+        return JSONResponse(content=False, status_code=404)
+    user_id=pobierz_uzytkownika(session_id)
+    
+    print(user_id)
+    if user_id:
+        return JSONResponse(content=True, status_code=200)
+    else:
+        return JSONResponse(content=False, status_code=404)
 
 @app.delete('/sesja')
 def logout_delete(session_id: str = Cookie(None)):

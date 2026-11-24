@@ -1,3 +1,10 @@
+fetch('http://localhost:8000/sesja', {
+    credentials: 'include'
+})
+    .then(response => {
+        if (response.status == 404) {window.location.href = 'http://localhost:8080';}
+    });
+
 fetch(`http://localhost:8000/klient`, {
     credentials: 'include'
 })
@@ -30,7 +37,7 @@ document.getElementById('logout').addEventListener('click', function() {
     })
     .then(response => {
         if (response.ok) {
-            window.location.href = 'http://localhost:8000/sesja';
+            window.location.href = 'http://localhost:8080';
         } else {
             console.error('Błąd podczas wylogowywania');
         }
