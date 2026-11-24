@@ -24,7 +24,7 @@ def zapis_log(username, password):
 
         typ = testy(cursor, username, password, czas, ip)
 
-        query = f"INSERT INTO logi VALUES (%s, %s, %s, 0, %s, %s, %s);"
+        query = "INSERT INTO logi VALUES (%s, %s, %s, 0, %s, %s, %s);"
         cursor.execute(query, (log_id, username, password, czas, ip, typ))
         cursor.close()
         mydb.commit()

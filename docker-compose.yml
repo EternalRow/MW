@@ -1,6 +1,5 @@
 services:
   backend:
-    ports: ["8000:8000"]
     build: ./backend
     container_name: backend
     environment:
@@ -28,7 +27,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_DATABASE}
-    ports: ["3306:3306"]
     volumes:
       - ./baza.sql:/docker-entrypoint-initdb.d/baza.sql
     healthcheck:

@@ -15,15 +15,18 @@ def gen_sesje(user):
         cursor = mydb.cursor()
         while wynik:
             session_num=random.uniform(1,1000)
-            cursor.execute(f"SELECT * FROM sesje WHERE id='{session_num}';")
+            query = "SELECT * FROM sesje WHERE id=%s;"
+            cursor.execute(query, (session_num,))
             wynik = cursor.fetchone()
 
         print(f"Wynik zapytania: {wynik}", flush=True)
 
-        cursor.execute(f"SELECT id FROM dane WHERE email='{user}';")
+        query = "SELECT id FROM dane WHERE email=%s;"
+        cursor.execute(query, (user,))
         wynik = cursor.fetchone()
         print(f"Wynik zapytania: {wynik[0]}", flush=True)
-        cursor.execute(f"INSERT INTO sesje (id, user_id) VALUES ('{session_num}', {wynik[0]});")
+        query = "INSERT INTO sesje VALUES (%s, %s);"
+        cursor.execute(query, (session_num, wynik[0]))
         cursor.close()
         mydb.commit()
         mydb.close()
@@ -41,7 +44,8 @@ def pobierz_uzytkownika(session_id):
         database=os.environ["MYSQL_DATABASE"]
         )
         cursor = mydb.cursor()
-        cursor.execute(f"SELECT user_id FROM sesje WHERE id LIKE {session_id};")
+        query = "SELECT user_id FROM sesje WHERE id LIKE %s;"
+        cursor.execute(query, (session_id,))
         wynik = cursor.fetchone()
         print(f"Wynik zapytania: {wynik}", flush=True)
         cursor.close()
@@ -62,7 +66,8 @@ def usun_sesje(session_id):
         database=os.environ["MYSQL_DATABASE"]
         )
         cursor = mydb.cursor()
-        cursor.execute(f"DELETE FROM sesje WHERE id='{session_id}';")
+        query = "DELETE FROM sesje WHERE id=%s;"
+        cursor.execute(query, (session_id,))
         cursor.close()
         mydb.commit()
         mydb.close()

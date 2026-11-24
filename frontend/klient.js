@@ -1,11 +1,13 @@
-fetch('http://localhost:8000/sesja', {
+const API_URL = "/api/";
+
+fetch(`${API_URL}sesja`, {
     credentials: 'include'
 })
     .then(response => {
         if (response.status == 404) {window.location.href = 'http://localhost:8080';}
     });
 
-fetch(`http://localhost:8000/klient`, {
+fetch(`${API_URL}klient`, {
     credentials: 'include'
 })
     .then(response => response.json())
@@ -16,7 +18,7 @@ fetch(`http://localhost:8000/klient`, {
     });
 
 document.getElementById('logout').addEventListener('click', function() {
-    fetch('http://localhost:8000/sesja', {
+    fetch(`${API_URL}sesja`, {
         method: 'DELETE',
         credentials: 'include'
     })

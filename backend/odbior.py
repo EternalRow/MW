@@ -6,15 +6,8 @@ from sesja import gen_sesje, usun_sesje, pobierz_uzytkownika
 from data import dane_klienta, dane_admina
 from logi import zapis_log, dopisz_udane
 
-app = FastAPI()
+app = FastAPI(root_path="/api")
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:8080"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 @app.post('/sesja')
 def pobierz_dane(username: str = Form(...), password: str = Form(...)):
