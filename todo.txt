@@ -1,9 +1,5 @@
 TOdo:
-- strona dla admina (pobieranie danych z bazy i WYŚWIETLANIE ich na stronie)
-- zmienić mysql:latest na obraz z innym tagiem
-- weryfikacja sesji
-- rozbudowanie walidacji
-- widok .html dla admina
+- weryfikacja uzytkownika
 - hash haseł
 
 - dana lokacja / odpowiedzialna za konkretny obiekt np. DELETE klient, GET klient (osobno dla sesji)
@@ -11,6 +7,10 @@ TOdo:
 
 
 done:
+- strona dla admina (pobieranie danych z bazy i WYŚWIETLANIE ich na stronie)
+- zmienić mysql:latest na obraz z innym tagiem
+- rozbudowanie walidacji
+- widok .html dla admina
 - funkcja zapisujaca logi
 - baza do zapisu logow
 - konfiguracja przez zmienne środowiskowe

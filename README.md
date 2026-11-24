@@ -2,12 +2,14 @@
 Wykrywanie podejrzanych logowań - aplikacja wielokontenerowa
 
 ---
-curl -X GET http://localhost:8000/health
+curl.exe -X GET http://localhost:8080/api/health
+{"status":"ok"}
 
-curl -X GET http://localhost:8000/admin
+curl.exe -X GET http://localhost:8080/api/admin
+- wypisuje tablice z logami
 
-curl -X GET http://localhost:8000/klient/1000
-
+curl.exe -X GET -b "session_id=675.7849201862776" http://localhost:8080/api/klient
+{"imie":"Arjun","nazwisko":"Martinez","balans":871.08}
 
 ---
 W tabeli logi kolumna type oznacza:
