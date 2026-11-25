@@ -29,8 +29,8 @@ CREATE TABLE logi (
 );
 
 INSERT INTO dane (id, first_name, last_name, email, password, balance, ip, admin, locked) VALUES
-(1, 'Arjun', 'Martinez', 'arjun.martinez73@yahoo.com', 'amartinez744', 871.08, '123.239.93.253', 0, 0),
-(2, 'Mei', 'Tanaka', 'mei.tanaka90@outlook.com', 'mtanaka647', 547.42, '78.12.158.6', 1, 0),
+(1, 'Arjun', 'Martinez', 'arjun.martinez73@yahoo.com', 'amartinez744', 871.08, '123.239.93.253', 1, 0),
+(2, 'Mei', 'Tanaka', 'mei.tanaka90@outlook.com', 'mtanaka647', 547.42, '78.12.158.6', 0, 0),
 (3, 'Barbara', 'Nguyen', 'barbara.nguyen@test.org', 'bnguyen833', 878.7, '206.9.42.166', 0, 0),
 (4, 'Jennifer', 'Ali', 'jennifer.ali36@example.com', 'jali505', 879.18, '214.135.186.163', 0, 0),
 (5, 'Lucas', 'Williams', 'lucas.williams49@outlook.com', 'lwilliams990', 438.76, '218.16.111.85', 0, 0),

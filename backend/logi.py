@@ -124,6 +124,26 @@ def sprawdz_wstrzykiwanie(tekst):
     return False
      
 
+def usun_wpis_log(id_wpisu: int):
+    try:
+        mydb = mysql.connector.connect(
+        host="database",
+        user="root",
+        password=os.environ["MYSQL_ROOT_PASSWORD"],
+        database=os.environ["MYSQL_DATABASE"]
+        )
 
+        cursor = mydb.cursor()
 
+        query = "DELETE FROM logi WHERE id=%s;"
+        
+        cursor.execute(query, (id_wpisu,))
 
+        cursor.close()
+        mydb.commit()
+        mydb.close()
+        return
+
+    except Exception as e:
+        print(f"Błąd bazy: {e}")
+        return

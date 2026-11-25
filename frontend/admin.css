@@ -45,8 +45,9 @@ h3{
 .background{
     background-color:rgb(101, 219, 126);
     height: 500px;
-    padding-top: 100px;
+    padding-top: 10px;
     width: auto;
+    display: flex;
 }
 
 .main{
@@ -54,10 +55,13 @@ h3{
     box-shadow: rgb(129, 126, 126) 0.2px 0.5px 10px;
     padding-bottom: 30px;
     width: 97%;
-    height: 140%;
-    margin-top: 10px;
+    height: auto;
+    margin-top: auto;
     align-self:center;
+    display: flex;
+    flex-direction: column;
     background-color: whitesmoke;
+    margin-bottom: 10px;
 }
 
 .logo{
@@ -70,7 +74,7 @@ h3{
     margin: 0;
 }
 
-.logout-button{
+button{
     background-color: rgb(91, 214, 117);
     border: 2px solid rgb(225, 224, 224);
     border-radius: 5px;
@@ -81,7 +85,7 @@ h3{
     margin-top: 10px;
 }
 
-.logout-button:hover{
+button:hover{
     background-color: rgb(117, 232, 142);
     cursor: pointer;
 }
@@ -102,4 +106,37 @@ input{
 
 th, td{
     padding: 7px;
+}
+
+table{
+    margin: 10px;
+    width: 95%;
+}
+
+th{
+    background-color: rgb(183, 225, 183);
+}
+
+td{
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+.tabela{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: auto;
+    padding: 0;
+    margin: 0;
+}
+
+.menu_modyfikacji{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    width: auto;
+    align-self: center;
+    padding: 0;
+    margin: 0;
 }

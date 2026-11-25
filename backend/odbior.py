@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from walidacja import walidacja
 from sesja import gen_sesje, usun_sesje, pobierz_uzytkownika
 from data import dane_klienta, dane_admina
-from logi import zapis_log, dopisz_udane
+from logi import zapis_log, dopisz_udane, usun_wpis_log
 
 app = FastAPI(root_path="/api")
 
@@ -68,3 +68,7 @@ def admin():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+@app.delete("/admin/{id_wpisu}")
+def delete_log_by_id(id_wpisu: int):
+    return usun_wpis_log(id_wpisu)
