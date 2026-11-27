@@ -58,6 +58,21 @@ document.getElementById('button_usun').addEventListener('click', async function(
 
 });
 
+document.getElementById('button_zmien_typ').addEventListener('click', async function() {
+    let idWpisu = document.getElementById('input_id_wpisu').value.trim();
+    if (!idWpisu){
+        alert("Musisz wybrać ID wpisu.")
+        return;
+    }
+    
+    fetch(`${API_URL}admin/${encodeURIComponent(idWpisu)}`, {
+        method: 'POST',
+        credentials: 'include'
+    })
+
+    window.location.reload()
+
+});
 document.getElementById('logout').addEventListener('click', function() {
     fetch(`${API_URL}sesja`, {
         method: 'DELETE',

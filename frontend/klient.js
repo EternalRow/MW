@@ -14,7 +14,7 @@ fetch(`${API_URL}klient`, {
     .then(data => {
         document.querySelector('h3').textContent = `Witaj, ${data.imie} ${data.nazwisko}`;
         document.querySelector('h1').textContent = `Konto osobiste: ${data.balans} pln`;
-        document.querySelector('#main').innerHTML = `<p>Tu pojawi się historia płatności użytkownika ${data.imie}...</p>`
+        document.querySelector('#main').innerHTML += `<p>Tu pojawi się historia płatności użytkownika ${data.imie}...</p>`
     });
 
 document.getElementById('logout').addEventListener('click', function() {

@@ -70,6 +70,7 @@ def testy(cursor, username, password, czas, ip):
     4 - próba wstrzykiwania SQL
     5 - min 3 próby logowania z tym samym błędnym hasłem w ciągu 10 minut
     6 - udane logowanie w ciągu 10 minut z dwóch różnych adresów IP
+    7 - logowanie manualnie oznaczone jako podejrzane przez administratora
     '''
 
     # CZY WSTRZYKIWWANIE SQL
@@ -138,6 +139,37 @@ def usun_wpis_log(id_wpisu: int):
         query = "DELETE FROM logi WHERE id=%s;"
         
         cursor.execute(query, (id_wpisu,))
+
+        cursor.close()
+        mydb.commit()
+        mydb.close()
+        return
+
+    except Exception as e:
+        print(f"Błąd bazy: {e}")
+        return
+
+def zmien_status(id_wpisu: int):
+    try:
+        mydb = mysql.connector.connect(
+        host="database",
+        user="root",
+        password=os.environ["MYSQL_ROOT_PASSWORD"],
+        database=os.environ["MYSQL_DATABASE"]
+        )
+
+        cursor = mydb.cursor()
+
+        query = "SELECT type FROM logi WHERE id=%s"
+        cursor.execute(query, (id_wpisu,))
+        wyn = cursor.fetchone()
+        if wyn[0]==0:
+            nowy_status = 7
+        else:
+            nowy_status = 0
+
+        query = "UPDATE logi SET type=%s WHERE id=%s;"
+        cursor.execute(query, (nowy_status, id_wpisu))
 
         cursor.close()
         mydb.commit()
