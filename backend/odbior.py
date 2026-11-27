@@ -71,8 +71,15 @@ def health():
 
 @app.delete("/admin/{id_wpisu}")
 def delete_log_by_id(id_wpisu: int):
-    return usun_wpis_log(id_wpisu)
+    if usun_wpis_log(id_wpisu):
+        return JSONResponse(content={"deleted": True}, status_code=200)
+    else:
+        return JSONResponse(content={"deleted": False}, status_code=500)
+
 
 @app.post("/admin/{id_wpisu}")
 def modify_log_status(id_wpisu: int):
-    return zmien_status(id_wpisu)
+    if zmien_status(id_wpisu):
+        return JSONResponse(content={"modified":True}, status_code=200)
+    else:
+        return JSONResponse(content={"modified":False}, status_code=500)

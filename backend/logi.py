@@ -136,6 +136,12 @@ def usun_wpis_log(id_wpisu: int):
 
         cursor = mydb.cursor()
 
+        query = "SELECT COUNT(*) FROM logi WHERE id=%s;"
+        cursor.execute(query, (id_wpisu,))
+        wyn = cursor.fetchone()
+        if wyn[0]==0:
+            return False
+
         query = "DELETE FROM logi WHERE id=%s;"
         
         cursor.execute(query, (id_wpisu,))
@@ -143,11 +149,11 @@ def usun_wpis_log(id_wpisu: int):
         cursor.close()
         mydb.commit()
         mydb.close()
-        return
+        return True
 
     except Exception as e:
         print(f"Błąd bazy: {e}")
-        return
+        return False
 
 def zmien_status(id_wpisu: int):
     try:
@@ -174,8 +180,8 @@ def zmien_status(id_wpisu: int):
         cursor.close()
         mydb.commit()
         mydb.close()
-        return
+        return True
 
     except Exception as e:
         print(f"Błąd bazy: {e}")
-        return
+        return False
